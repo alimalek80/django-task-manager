@@ -1,0 +1,27 @@
+/* Ensure the entire task list section is scrollable */
+.task-list-container {
+    position: relative;
+    height: 100vh; /* Adjust height as needed */
+    overflow: hidden;
+}
+
+/* Scrollable area for tasks */
+.scrollable-tasks {
+    height: calc(100% - 150px); /* Adjust based on the height of the Create Task form */
+    overflow-y: auto;
+    padding-right: 10px; /* For scrollbar spacing */
+}
+
+/* Fixed bottom form for creating new tasks */
+.create-task-form {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Optional styling to improve appearance */
+.fixed-bottom.create-task-form {
+    background-color: #f8f9fa;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}

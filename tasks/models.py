@@ -14,10 +14,11 @@ class Task(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
-    due_date = models.DateField(default=timezone.now)
+    due_date = models.DateField(default=timezone.now, blank=True, null=True)
     start_time = models.DateTimeField(null=True, blank=True)
     end_time = models.DateTimeField(null=True, blank=True)
     completed = models.BooleanField(default=False)
+    in_progress = models.BooleanField(default=False)
 
     @property
     def time_spent(self):

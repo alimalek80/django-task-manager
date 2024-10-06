@@ -12,7 +12,8 @@ class TaskForm(forms.ModelForm):
             'category',
             'due_date',
             'start_time',
-            'end_time'
+            'end_time',
+            'in_progress'
         ]
         widgets = {
             'due_date': forms.SelectDateWidget(),
