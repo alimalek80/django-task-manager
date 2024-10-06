@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load form_filters %}
+
+
+{% block title %}
+    {% if form.instance.id %} Edit Task {% else %} Create Task {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">
+            {% if form.instance.id %} Edit Task {% else %} Create Task {% endif %}
+        </h5>
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Task Title -->
+            <div class="mb-3">
+                {{ form.title.label_tag }}
+                {{ form.title|add_class:"form-control" }}
+            </div>
+
+            <!-- Task Description -->
+            <div class="mb-3">
+                {{ form.description.label_tag }}
+                {{ form.description|add_class:"form-control" }}
+            </div>
+
+            <!-- Task Category -->
+            <div class="mb-3">
+                {{ form.category.label_tag }}
+                {{ form.category|add_class:"form-select" }}
+            </div>
+
+            <!-- New Category Input -->
+            <div class="mb-3">
+                <label for="id_new_category" class="form-label">Or create a new category:</label>
+                {{ form.new_category|add_class:"form-control" }}
+            </div>
+
+            <!-- Task Due Date -->
+            <div class="mb-3">
+                {{ form.due_date.label_tag }}
+                {{ form.due_date|add_class:"form-select" }}
+            </div>
+
+            <!-- Start Time -->
+            <div class="mb-3">
+                {{ form.start_time.label_tag }}
+                {{ form.start_time|add_class:"form-control" }}
+            </div>
+
+            <!-- End Time -->
+            <div class="mb-3">
+                {{ form.end_time.label_tag }}
+                {{ form.end_time|add_class:"form-control" }}
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">
+                {% if form.instance.id %} Update Task {% else %} Create Task {% endif %}
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
