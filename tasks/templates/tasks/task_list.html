@@ -39,8 +39,10 @@
         </ul>
 
         <h5>
-            <a class="collapsed" data-bs-toggle="collapse" href="#completedTasks" role="button" aria-expanded="false" aria-controls="completedTasks" id="completedTasksTrigger">
+            <a class="collapsed btn btn-primary" data-bs-toggle="collapse" href="#completedTasks" role="button" aria-expanded="false" aria-controls="completedTasks" id="completedTasksTrigger">
+                <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
                 Completed Tasks
+
             </a>
         </h5>
         <div class="collapse" id="completedTasks">
@@ -133,6 +135,20 @@ document.addEventListener('DOMContentLoaded', function() {
             startTimer({{ task.id }}, "{{ task.start_time|date:'Y-m-d H:i:s' }}");
         {% endif %}
     {% endfor %}
+
+    // JavaScript to toggle the arrow direction for Completed Tasks
+    const toggleIcon = document.getElementById('completedTasksTrigger');
+    const icon = document.getElementById('icon-toggle');
+
+    toggleIcon.addEventListener('click', function() {
+        if (icon.classList.contains('fa-caret-square-o-right')) {
+            icon.classList.remove('fa-caret-square-o-right');
+            icon.classList.add('fa-caret-square-o-down');
+        } else {
+            icon.classList.remove('fa-caret-square-o-down');
+            icon.classList.add('fa-caret-square-o-right');
+        }
+    });
 });
 
 </script>
